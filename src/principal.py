@@ -28,9 +28,24 @@ class Principal(Ui_Form, QMainWindow):
         self.label_erro.hide()
         self.stackedWidget.setCurrentWidget(self.page)  # Tela login
         self.pushButton_conectar.clicked.connect(self.realizar_login)
-        self.pushButton_criar_conta.clicked.connect(self.acessar_cadastro)
-        self.pushButton_esqueci_senha.clicked.connect(self.alterar_senha)
+        self.pushButton_criar_conta.clicked.connect(self.ir_para_criar_conta)
+        self.pushButton_esqueci_senha.clicked.connect(self.ir_para_esqueci_senha)
         #self.label_erro.setVisible(False)
+
+        #componetes tela de cadastro 
+        self.pushButton_salvar_medicoes.clicked.connect(self.salvar_medicoes)
+
+        #componetes tela de registros 
+        self.pushButton_editar.clicked.connect(self.editar_med)
+        self.pushButton_sair.clicked.connect(self.sair_med)
+        self.pushButton_exportar.clicked.connect(self.exporta_med)
+        self.pushButton_salvar_medicoes.clicked.connect(self.salvar_medicoes)
+
+        #componentes tela de criar usuario 
+        self.pushButton_confirmar_conta.clicked.connect(self.confirmar_conta)
+
+        #componente tela de esqueceu a senha 
+        self.pushButton_confirma_nova_senha.clicked.connect(self.confirma_nova_senha)
 
 
         # ---------------- CONEXÕES ----------------
