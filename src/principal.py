@@ -1,12 +1,12 @@
 import sys
-from gui_principal import Ui_Form
+from gui_principal import Ui_MainWindow
 from PyQt6.QtWidgets import QMainWindow, QApplication
 
 from models.usuario import Usuario
 
 from controllers.usuarioControl import UsuarioControl
 
-class Principal(Ui_Form, QMainWindow):
+class Principal(Ui_MainWindow, QMainWindow):
 
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -16,7 +16,7 @@ class Principal(Ui_Form, QMainWindow):
         self.init_usuarios()
 
     def init_components(self):
-        # componentes da tela de login 
+        # Componentes da tela de login 
         self.label_erro.hide()
         self.stackedWidget.setCurrentWidget(self.page)  # Tela login
         self.pushButton_conectar.clicked.connect(self.realizar_login)
@@ -24,20 +24,21 @@ class Principal(Ui_Form, QMainWindow):
         self.pushButton_esqueci_senha.clicked.connect(self.ir_para_esqueci_senha)
         #self.label_erro.setVisible(False)
 
-        #componetes tela de cadastro 
-        self.pushButton_salvar_medicoes.clicked.connect(self.salvar_medicoes)
+        # Componetes tela de cadastro 
+        self.pushButton_salvar_medicoes.clicked.connect(self.pushButton_salvar_medicoes)
 
-        #componetes tela de registros 
-        self.pushButton_editar.clicked.connect(self.editar_med)
-        self.pushButton_sair.clicked.connect(self.sair_med)
-        self.pushButton_exportar.clicked.connect(self.exporta_med)
-        self.pushButton_salvar_medicoes.clicked.connect(self.salvar)
+        # Componetes tela de registros 
+        self.pushButton_editar.clicked.connect(self.pushButton_salvar_medicoes)
+        self.pushButton_sair.clicked.connect(self.pushButton_sair)
+        self.pushButton_exportar.clicked.connect(self.pushButton_exportar)
+        self.pushButton_salvar_medicoes.clicked.connect(self.pushButton_excluir)
+        self.pushButton_excluir.clicked.connect(self.pushButton_excluir)
 
-        #componentes tela de criar usuario 
-        self.pushButton_confirmar_conta.clicked.connect(self.confirmar_conta)
+        # Componentes da tela criar usuario 
+        self.pushButton_confirmar_conta.clicked.connect(self.pushButton_confirmar_conta)
 
-        #componente tela de esqueceu a senha 
-        self.pushButton_confirma_nova_senha.clicked.connect(self.confirma_nova_senha)
+        # Ccomponente da tela esqueceu a senha 
+        self.pushButton_confirma_nova_senha.clicked.connect(self.pushButton_confirma_nova_senha)
 
 
         # ---------------- CONEXÕES ----------------
@@ -45,8 +46,8 @@ class Principal(Ui_Form, QMainWindow):
         self.pushButton_criar_conta.clicked.connect(self.ir_para_criar_conta)
         self.pushButton_esqueci_senha.clicked.connect(self.ir_para_esqueci_senha)
 
-        self.pushButton_2.clicked.connect(self.voltar_login)
-        self.pushButton_3.clicked.connect(self.voltar_login)
+        #self.pushButton_2.clicked.connect(self.voltar_login)
+        #self.pushButton_3.clicked.connect(self.voltar_login)
 
         self.pushButton_confirmar_conta.clicked.connect(self.criar_conta)
         self.pushButton_confirma_nova_senha.clicked.connect(self.redefinir_senha)
@@ -75,7 +76,7 @@ class Principal(Ui_Form, QMainWindow):
         login = self.lineEdit_usuario.text()
         senha = self.lineEdit_senha.text()
 
-        for usuario in self.lista_usuario:
+        for usuario in self.usuario:
             if login == usuario['usuario'] and senha == usuario['senha']:
                 self.stackedWidget.setCurrentWidget(self.page_2)
                 self.label_erro.setVisible(False)
@@ -87,36 +88,36 @@ class Principal(Ui_Form, QMainWindow):
 
     # ================= CRIAR CONTA =================
     def criar_conta(self):
-        nome = self.lineEdit_novo_usuario.text()
+        nome = self.lineEdit_nome_usuario.text()
         senha = self.lineEdit_nova_senha.text()
-        confirma = self.lineEdit_confirmar_senha.text()
+        confirma = self.lineEdit_confirma_senha.text()
 
-        if nome == "" or senha == "" or confirma == "":
-            QMessageBox.warning(self, "Erro", "Preencha todos os campos.")
+        if QMainWindow == "" or senha == "" or confirma == "":
+            QMainWindow.warning(self, "Erro", "Preencha todos os campos.")
             return
 
         if senha != confirma:
-            QMessageBox.warning(self, "Erro", "Senhas não coincidem.")
+            QMainWindow.warning(self, "Erro", "Senhas não coincidem.")
             return
 
-        self.lista_usuario.append({"usuario": nome, "senha": senha})
+        self.lista_usuario.apped({"usuario": nome, "senha": senha})
 
-        QMessageBox.information(self, "Sucesso", "Conta criada com sucesso!")
+        QMainWindow.information(self, "Sucesso", "Conta criada com sucesso!")
         self.voltar_login()
 
     # ================= REDEFINIR SENHA =================
     def redefinir_senha(self):
-        usuario_digitado = self.lineEdit_usuario_esqueci.text()
-        nova_senha = self.lineEdit_nova_senha_esqueci.text()
+        usuario_digitado = self.lineEdit_usuario.text()
+        nova_senha = self.lineEdit_nova_senha.text()
 
         for usuario in self.lista_usuario:
             if usuario_digitado == usuario['usuario']:
                 usuario['senha'] = nova_senha
-                QMessageBox.information(self, "Sucesso", "Senha alterada com sucesso!")
+                QMainWindow.information(self, "Sucesso", "Senha alterada com sucesso!")
                 self.voltar_login()
                 return
 
-        QMessageBox.warning(self, "Erro", "Usuário não encontrado.")
+        QMainWindow.warning(self, "Erro", "Usuário não encontrado.")
 
     # ================= TROCAR TELAS =================
     def ir_para_criar_conta(self):
@@ -130,14 +131,14 @@ class Principal(Ui_Form, QMainWindow):
 
     # ================= SAIR =================
     def sair_sistema(self):
-        resposta = QMessageBox.question(
+        resposta = QMainWindow.question(
             self,
             "Sair",
             "Deseja realmente sair?",
-            QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No
+            QMainWindow.StandardButton.Yes | QMainWindow.StandardButton.No
         )
 
-        if resposta == QMessageBox.StandardButton.Yes:
+        if resposta == QMainWindow.StandardButton.Yes:
             self.lineEdit_usuario.clear()
             self.lineEdit_senha.clear()
             self.stackedWidget.setCurrentWidget(self.page)

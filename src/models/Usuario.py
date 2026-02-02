@@ -1,10 +1,13 @@
 class Usuario:
 
     def __init__(self):
-        self.__nome = ''
-        self.__egmail = ''
-        self.__senha_1 = ''
-        self.__senha_2 = ''
+        self.__nome:str = ''
+        self.__sobrenome:str = ''
+        self.__user:str = ''
+        self.__email:str = ''
+        self.__senha_1:str = ''
+        self.__senha_2:str = ''
+        self.error:str = ''
 
     @property
     def nome(self):
@@ -14,8 +17,33 @@ class Usuario:
     def nome(self, nome):
         if nome != '':
             self.__nome = nome
+            self.error = ''
         else:
-            print("o campo nome é obrigatorio")
+            self.error = 'O campo "Nome" é obrigatório'
+
+    @property
+    def sobrenome(self):
+        return self.__sobrenome
+
+    @nome.setter
+    def sobrenome(self, sobrenome):
+        if sobrenome != '':
+            self.__nome = sobrenome
+            self.error = ''
+        else:
+            self.error = 'O campo "Sobrenome" é obrigatório'
+
+    @property
+    def user(self):
+        return self.__user
+
+    @nome.setter
+    def user(self, user):
+        if user != '':
+            self.__user = user
+            self.error = ''
+        else:
+            self.error = 'O campo "Usuário" é obrigatório'
 
     @property
     def email(self):
@@ -25,8 +53,9 @@ class Usuario:
     def email(self, email):
         if email != '':
             self.__email = email
+            self.error = ''
         else:
-            print("o campo email é obrigatório")
+            self.error = 'O campo "E-mail" é obrigatório'
 
     @property
     def senha_1(self):
@@ -37,10 +66,11 @@ class Usuario:
         if senha_1 != '':
             if len(senha_1) >= 5 and len (senha_1) <= 8:
                 self.__senha_1 = senha_1
+                self.error = ''
             else:
-                print("a senha deve possuir entre 5 a 8 caracteres")
+                self.error = 'A senha deve possuir entre 5 a 8 caracteres'
         else:
-            print("o campo senha é obrigatório")
+            self.error = 'O campo senha é obrigatório'
 
     @property
     def senha_2(self):
@@ -51,7 +81,8 @@ class Usuario:
         if senha_2 != '':
             if senha_2 == self.senha_1:
                 self.__senha_2 = senha_2
+                self.error = ''
             else:
-                print("senhas fornecidas nao sao iguais")
+                self.error = 'As senhas fornecidas não são iguais'
         else:
-            print("o campo confirmar senha é obrigatório")
+            self.error = 'O campo confirmar senha é obrigatório'
