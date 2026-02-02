@@ -57,14 +57,18 @@ class Principal(Ui_MainWindow, QMainWindow):
 
     def init_usuarios(self):
         usuario_1 = Usuario()
-        usuario_1.nome = 'jaque'
+        usuario_1.nome = 'Jaqueline'
+        usuario_1.sobrenome = 'Lima'
+        usuario_1.user = 'jaque'
         usuario_1.email = 'jaque@memissoes.com'
         usuario_1.senha_1 = '12345'
         usuario_1.senha_2 = '12345'
         self.controle_usuarios.add_usuario(usuario_1)
 
         usuario_2 = Usuario()
-        usuario_2.nome = 'luana'
+        usuario_2.nome = 'Luana'
+        usuario_2.sobrenome = 'Silva'
+        usuario_2.user = 'luana'
         usuario_2.email = 'luana@memissoes.com'
         usuario_2.senha_1 = '67890'
         usuario_2.senha_2 = '67890'

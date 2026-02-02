@@ -10,10 +10,10 @@ class UsuarioControl:
         self.__lista_usuarios.append(usuario)
         print("usuario adicionado com sucesso")
 
-    def consultar_usuario(self, nome:str, senha:str):
+    def consultar_usuario(self, usuario:str, senha:str):
         flag = False
         for usuario in self.__lista_usuarios:
-            if usuario.nome == nome and usuario.senha_1 == senha:
+            if usuario.user == usuario and usuario.senha_1 == senha:
                 flag = True
                 break
         return flag
