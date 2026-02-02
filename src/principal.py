@@ -2,27 +2,19 @@ import sys
 from gui_principal import Ui_Form
 from PyQt6.QtWidgets import QMainWindow, QApplication
 
-#from PySide6.QtWidgets import (
-    #QMainWindow, QApplication, QLineEdit, QMessageBox
-#)
-#from projeto import Ui_Form
-#import sys
+from models.usuario import Usuario
 
+from controllers.usuarioControl import UsuarioControl
 
 class Principal(Ui_Form, QMainWindow):
 
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.setupUi(self)
-
-        # ---------------- LISTA DE USUÁRIOS ----------------
-        #self.lista_usuario = [
-            #{'usuario': 'luana', 'senha': '4567'},
-            #{'usuario': 'jaque', 'senha': '1234'},
-            #{'usuario': 'bruno', 'senha': '1111'}
-        #]
+        self.setupUi(self) 
         self.init_components()
-    
+        self.controle_usuarios = UsuarioControl()
+        self.init_usuarios()
+
     def init_components(self):
         # componentes da tela de login 
         self.label_erro.hide()
@@ -39,7 +31,7 @@ class Principal(Ui_Form, QMainWindow):
         self.pushButton_editar.clicked.connect(self.editar_med)
         self.pushButton_sair.clicked.connect(self.sair_med)
         self.pushButton_exportar.clicked.connect(self.exporta_med)
-        self.pushButton_salvar_medicoes.clicked.connect(self.salvar_medicoes)
+        self.pushButton_salvar_medicoes.clicked.connect(self.salvar)
 
         #componentes tela de criar usuario 
         self.pushButton_confirmar_conta.clicked.connect(self.confirmar_conta)
@@ -61,6 +53,22 @@ class Principal(Ui_Form, QMainWindow):
 
         # BOTÃO SAIR DA TELA DE REGISTRO (page_2)
         self.pushButton_sair.clicked.connect(self.sair_sistema)
+
+    def init_usuarios(self):
+        usuario_1 = Usuario()
+        usuario_1.nome = 'jaque'
+        usuario_1.email = 'jaque@memissoes.com'
+        usuario_1.senha_1 = '12345'
+        usuario_1.senha_2 = '12345'
+        self.controle_usuarios.add_usuario(usuario_1)
+
+        usuario_2 = Usuario()
+        usuario_2.nome = 'luana'
+        usuario_2.email = 'luana@memissoes.com'
+        usuario_2.senha_1 = '67890'
+        usuario_2.senha_2 = '67890'
+        self.controle_usuarios.add_usuario(usuario_2)
+
 
     # ================= LOGIN =================
     def realizar_login(self):
