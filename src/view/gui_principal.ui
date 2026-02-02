@@ -606,6 +606,32 @@
          <string>Limpar</string>
         </property>
        </widget>
+       <widget class="QPushButton" name="pushButtonCadastrosSair">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>130</y>
+          <width>101</width>
+          <height>25</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Sair</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButtonCadastrosDados">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>100</y>
+          <width>101</width>
+          <height>25</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Dados</string>
+        </property>
+       </widget>
       </widget>
      </widget>
      <widget class="QWidget" name="pageDados">
@@ -738,7 +764,7 @@
        <property name="frameShadow">
         <enum>QFrame::Shadow::Raised</enum>
        </property>
-       <widget class="QPushButton" name="pushButtonDadosSalvar">
+       <widget class="QPushButton" name="pushButtonDadosAlterar">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -748,7 +774,7 @@
          </rect>
         </property>
         <property name="text">
-         <string>Salvar</string>
+         <string>Alterar</string>
         </property>
        </widget>
        <widget class="QPushButton" name="pushButtonDadosExcluir">
@@ -764,7 +790,20 @@
          <string>Excluir</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="pushButtonDadosAlterar">
+       <widget class="QPushButton" name="pushButtonDadosSair">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>100</y>
+          <width>101</width>
+          <height>25</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Sair</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButtonDadosVoltar">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -774,7 +813,7 @@
          </rect>
         </property>
         <property name="text">
-         <string>Alterar</string>
+         <string>Voltar</string>
         </property>
        </widget>
       </widget>
@@ -851,6 +890,19 @@
         </property>
         <property name="text">
          <string>Cadastrar</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButtonCadUsuariosVoltar">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>40</y>
+          <width>101</width>
+          <height>25</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Voltar</string>
         </property>
        </widget>
       </widget>
@@ -1068,7 +1120,7 @@
          <x>210</x>
          <y>220</y>
          <width>351</width>
-         <height>111</height>
+         <height>151</height>
         </rect>
        </property>
        <property name="frameShape">
@@ -1081,7 +1133,7 @@
         <property name="geometry">
          <rect>
           <x>60</x>
-          <y>38</y>
+          <y>65</y>
           <width>277</width>
           <height>25</height>
          </rect>
@@ -1103,7 +1155,7 @@
         <property name="geometry">
          <rect>
           <x>11</x>
-          <y>11</y>
+          <y>38</y>
           <width>43</width>
           <height>16</height>
          </rect>
@@ -1116,7 +1168,7 @@
         <property name="geometry">
          <rect>
           <x>11</x>
-          <y>38</y>
+          <y>65</y>
           <width>35</width>
           <height>16</height>
          </rect>
@@ -1129,7 +1181,7 @@
         <property name="geometry">
          <rect>
           <x>11</x>
-          <y>65</y>
+          <y>92</y>
           <width>329</width>
           <height>25</height>
          </rect>
@@ -1142,7 +1194,7 @@
         <property name="geometry">
          <rect>
           <x>60</x>
-          <y>11</y>
+          <y>38</y>
           <width>277</width>
           <height>25</height>
          </rect>
@@ -1152,6 +1204,48 @@
         </property>
         <property name="placeholderText">
          <string>Insira a Nova Senha</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButtonRecuperacaoVoltar">
+        <property name="geometry">
+         <rect>
+          <x>11</x>
+          <y>120</y>
+          <width>329</width>
+          <height>25</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Voltar</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEditRecuperacaoUsuario">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>10</y>
+          <width>277</width>
+          <height>25</height>
+         </rect>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+        <property name="placeholderText">
+         <string>Insira o Usuário</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="labelRecuperacaoUsuario">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>13</y>
+          <width>43</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Usuário:</string>
         </property>
        </widget>
       </widget>

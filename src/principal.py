@@ -1,6 +1,7 @@
 import sys
 from gui_principal import Ui_MainWindow
 from PyQt6.QtWidgets import QMainWindow, QApplication
+from PyQt6.QtGui import QPixmap, QIcon
 
 from models.usuario import Usuario
 
@@ -14,46 +15,47 @@ class Principal(Ui_MainWindow, QMainWindow):
         self.init_components()
         self.controle_usuarios = UsuarioControl()
         self.init_usuarios()
+        self.cor_sucesso = 'background-color: rgb(101, 184, 145)'
+        self.cor_erro = 'background-color: rgb(204, 41, 54); color: rgb(255, 255, 255)'
 
     def init_components(self):
-        # Componentes da tela de login 
-        self.label_erro.hide()
-        self.stackedWidget.setCurrentWidget(self.page)  # Tela login
-        self.pushButton_conectar.clicked.connect(self.realizar_login)
-        self.pushButton_criar_conta.clicked.connect(self.ir_para_criar_conta)
-        self.pushButton_esqueci_senha.clicked.connect(self.ir_para_esqueci_senha)
-        #self.label_erro.setVisible(False)
 
-        # Componetes tela de cadastro 
-        self.pushButton_salvar_medicoes.clicked.connect(self.pushButton_salvar_medicoes)
+        # Componentes da tela de Login
+        self.frameLoginError.hide()
+        self.labelLoginImagem.setPixmap(QPixmap('src/img/icon'))
+        self.pushButtonLoginConectar.clicked.connect(self.realizar_login)
+        self.pushButtonLoginCriarConta.clicked.connect(self.acessar_cadastros)
+        self.pushButtonLoginEsqSenha.clicked.connect(self.acessar_recuperacao)
+        self.pushButtonLoginError.clicked.connect(lambda: self.frameLoginError.hide())
 
-        # Componetes tela de registros 
-        self.pushButton_editar.clicked.connect(self.pushButton_salvar_medicoes)
-        self.pushButton_sair.clicked.connect(self.pushButton_sair)
-        self.pushButton_exportar.clicked.connect(self.pushButton_exportar)
-        self.pushButton_salvar_medicoes.clicked.connect(self.pushButton_excluir)
-        self.pushButton_excluir.clicked.connect(self.pushButton_excluir)
+        # Componentes da tela Cadastro de Emissões
+        self.frameCadastrosError.hide()
+        self.pushButtonCadastrosSalvar.clicked.connect(self.salvar_cadastro)
+        self.pushButtonCadastrosExcluir.clicked.connect(self.excluir_cadastro)
+        #self.pushButtonCadastrosLimpar.clicked.connect()
+        self.pushButtonCadastrosDados.clicked.connect(self.acessar_dados)
+        self.pushButtonCadastrosSair.clicked.connect(self.acessar_login)
+        self.pushButtonCadastrosError.clicked.connect(lambda: self.frameCadastrosError.hide())
 
-        # Componentes da tela criar usuario 
-        self.pushButton_confirmar_conta.clicked.connect(self.pushButton_confirmar_conta)
+        # Componentes da tela Dados
+        self.frameDadosError.hide()
+        self.pushButtonDadosAlterar.clicked.connect(self.alterar_cadastro)
+        self.pushButtonDadosExcluir.clicked.connect(self.excluir_cadastro_dados)
+        self.pushButtonDadosVoltar.clicked.connect(self.acessar_cadastros)
+        self.pushButtonDadosSair.clicked.connect(self.acessar_login)
+        self.pushButtonDadosError.clicked.connect(lambda: self.frameDadosError.hide())
 
-        # Ccomponente da tela esqueceu a senha 
-        self.pushButton_confirma_nova_senha.clicked.connect(self.pushButton_confirma_nova_senha)
+        # Componentes da tela Cadastro de Usuarios
+        self.frameCadUsuarioError.hide()
+        self.pushButtonCadUsuariosCadastrar.clicked.connect(self.cadastrar_usuario)
+        self.pushButtonCadUsuariosVoltar.clicked.connect(self.acessar_login)
+        self.pushButtonCadUsuarioError.clicked.connect(lambda: self.frameCadUsuarioError.hide())
 
-
-        # ---------------- CONEXÕES ----------------
-        self.pushButton_conectar.clicked.connect(self.realizar_login)
-        self.pushButton_criar_conta.clicked.connect(self.ir_para_criar_conta)
-        self.pushButton_esqueci_senha.clicked.connect(self.ir_para_esqueci_senha)
-
-        #self.pushButton_2.clicked.connect(self.voltar_login)
-        #self.pushButton_3.clicked.connect(self.voltar_login)
-
-        self.pushButton_confirmar_conta.clicked.connect(self.criar_conta)
-        self.pushButton_confirma_nova_senha.clicked.connect(self.redefinir_senha)
-
-        # BOTÃO SAIR DA TELA DE REGISTRO (page_2)
-        self.pushButton_sair.clicked.connect(self.sair_sistema)
+        # Componentes da tela Recuperação
+        self.frameRecuperacaoError.hide()
+        self.pushButtonRecuperacaoSalvar.clicked.connect(self.recuperacao_senha)
+        self.pushButtonRecuperacaoVoltar.clicked.connect(self.acessar_login)
+        self.pushButtonRecuperacaoError.clicked.connect(lambda: self.frameRecuperacaoError.hide())
 
     def init_usuarios(self):
         usuario_1 = Usuario()
@@ -74,21 +76,27 @@ class Principal(Ui_MainWindow, QMainWindow):
         usuario_2.senha_2 = '67890'
         self.controle_usuarios.add_usuario(usuario_2)
 
-
-    # ================= LOGIN =================
+    # Métodos da Classe
     def realizar_login(self):
-        login = self.lineEdit_usuario.text()
-        senha = self.lineEdit_senha.text()
+        pass
 
-        for usuario in self.usuario:
-            if login == usuario['usuario'] and senha == usuario['senha']:
-                self.stackedWidget.setCurrentWidget(self.page_2)
-                self.label_erro.setVisible(False)
-                return
+    def salvar_cadastro(self):
+        pass
 
-        self.label_erro.setVisible(True)
-        self.label_erro.setText("Login ou senha incorretos")
+    def excluir_cadastro(self):
+        pass
 
+    def alterar_cadastro(self):
+        pass
+
+    def excluir_cadastro_dados(self):
+        pass
+
+    def cadastrar_usuario(self):
+        pass
+
+    def recuperacao_senha(self):
+        pass
 
     # ================= CRIAR CONTA =================
     def criar_conta(self):
@@ -154,8 +162,22 @@ class Principal(Ui_MainWindow, QMainWindow):
         else:
             self.lineEdit_senha.setEchoMode(QLineEdit.EchoMode.Password)
     # acesso 
-    def acessar_cadastro(self):
-        self.stackedWidget.setCurrentWidget(self.page_3)
+    
+    # Métodos de Navegação
+    def acessar_login(self):
+        self.stackedWidget.setCurrentWidget(self.pageLogin)
+
+    def acessar_cadastros(self):
+        self.stackedWidget.setCurrentWidget(self.pageCadastros)
+    
+    def acessar_dados(self):
+        self.stackedWidget.setCurrentWidget(self.pageDados)
+
+    def acessar_cad_usuario(self):
+        self.stackedWidget.setCurrentWidget(self.pageCadUsuario)
+    
+    def acessar_recuperacao(self):
+        self.stackedWidget.setCurrentWidget(self.pageRecuperacao)
 
 if __name__ == '__main__':
     qt = QApplication(sys.argv)
