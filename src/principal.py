@@ -11,7 +11,7 @@ class Principal(Ui_MainWindow, QMainWindow):
 
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.setupUi(self) 
+        self.setupUi(self)
         self.init_components()
         self.controle_usuarios = UsuarioControl()
         self.init_usuarios()
