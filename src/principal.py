@@ -61,7 +61,7 @@ class Principal(Ui_MainWindow, QMainWindow):
         usuario_1 = Usuario()
         usuario_1.nome = 'Jaqueline'
         usuario_1.sobrenome = 'Lima'
-        usuario_1.user = 'jaque'
+        usuario_1.usuario = 'jaque'
         usuario_1.email = 'jaque@memissoes.com'
         usuario_1.senha_1 = '12345'
         usuario_1.senha_2 = '12345'
@@ -70,7 +70,7 @@ class Principal(Ui_MainWindow, QMainWindow):
         usuario_2 = Usuario()
         usuario_2.nome = 'Luana'
         usuario_2.sobrenome = 'Silva'
-        usuario_2.user = 'luana'
+        usuario_2.usuario = 'luana'
         usuario_2.email = 'luana@memissoes.com'
         usuario_2.senha_1 = '67890'
         usuario_2.senha_2 = '67890'
@@ -78,7 +78,25 @@ class Principal(Ui_MainWindow, QMainWindow):
 
     # Métodos da Classe
     def realizar_login(self):
-        pass
+        user = self.lineEditLoginUsuario.text()
+        senha = self.lineEditLoginSenha.text()
+
+        if self.controle_usuarios.validar_acesso(user, senha):
+            self.lineEditLoginUsuario.clear()
+            self.lineEditLoginSenha.clear()
+            self.frameLoginError.hide()
+            self.acessar_cadastros()
+            print('Login realizado com sucesso')
+        elif user == 'admin' and senha == '54321':
+            self.lineEditLoginUsuario.clear()
+            self.lineEditLoginSenha.clear()
+            self.frameLoginError.hide()
+            self.acessar_cadastros()
+            print('Login realizado com sucesso')
+        else:
+            self.labelLoginError.setText('Usuário ou Senha incorretos')
+            self.labelLoginError.setStyleSheet(self.cor_erro)
+            self.frameLoginError.show()
 
     def salvar_cadastro(self):
         pass

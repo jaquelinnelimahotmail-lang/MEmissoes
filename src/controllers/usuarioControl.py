@@ -10,10 +10,10 @@ class UsuarioControl:
         self.__lista_usuarios.append(usuario)
         print("usuario adicionado com sucesso")
 
-    def validar_acesso(self, usuario:str, senha:str) -> bool:
+    def validar_acesso(self, user:str, senha:str) -> bool:
         validacao = False
-        for usuario in self.__lista_usuarios:
-            if usuario.usuario == usuario and usuario.senha_1 == senha:
+        for user in self.__lista_usuarios:
+            if user.usuario == user and user.senha_1 == senha:
                 validacao = True
                 break
         return validacao
