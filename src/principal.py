@@ -4,8 +4,10 @@ from PyQt6.QtWidgets import QMainWindow, QApplication
 from PyQt6.QtGui import QPixmap, QIcon
 
 from models.usuario import Usuario
+from models.emissao import Emissao
 
 from controllers.usuarioControl import UsuarioControl
+from controllers.emissaoControl import EmissaoControl
 
 class Principal(Ui_MainWindow, QMainWindow):
 
@@ -14,6 +16,7 @@ class Principal(Ui_MainWindow, QMainWindow):
         self.setupUi(self)
         self.init_components()
         self.controle_usuarios = UsuarioControl()
+        self.controle_emissoes = EmissaoControl()
         self.init_usuarios()
         self.cor_sucesso = 'background-color: rgb(101, 184, 145)'
         self.cor_erro = 'background-color: rgb(204, 41, 54); color: rgb(255, 255, 255)'
@@ -87,20 +90,46 @@ class Principal(Ui_MainWindow, QMainWindow):
             self.frameLoginError.hide()
             self.acessar_cadastros()
             print('Login realizado com sucesso')
-        elif user == 'admin' and senha == '54321':
-            self.lineEditLoginUsuario.clear()
-            self.lineEditLoginSenha.clear()
-            self.frameLoginError.hide()
-            self.acessar_cadastros()
-            print('Login realizado com sucesso')
         else:
             self.labelLoginError.setText('Usuário ou Senha incorretos')
             self.labelLoginError.setStyleSheet(self.cor_erro)
             self.frameLoginError.show()
 
     def salvar_cadastro(self):
-        pass
+        
+        indice = self.tableWidget.currentRow()
 
+        emissao = Emissao()
+        emissao.local = self.lineEditCadastrosLocal.text()
+        emissao.latitude = self.lineEditCadastrosLatitude.text()
+        emissao.longitude = self.lineEditCadastrosLongitude.text()
+        emissao.tipo_gas = self.lineEditCadastrosTipoDeGas.text()
+        emissao.valor = self.lineEditCadastrosValor.text()
+        emissao.unidade = self.lineEditCadastrosUnidade.text()
+        emissao.limite = float(self.lineEditCadastrosLimite.text())
+        if len(emissao.error) != 0:
+            self.labelCadastrosError.setText(emissao.error)
+            self.labelCadastrosError.setStyleSheet(self.cor_erro)
+            self.frameCadastrosError.show()
+        else:
+            if indice >= 0:
+                msg = self.controle_emissoes.excluir_emissao(indice, emissao)
+                self.labelCadastrosError.setText(msg)
+                self.labelCadastrosError.setStyleSheet(self.cor_sucesso)
+                self.frameCadastrosError.show()
+                self.tabelar_cadastros()
+                self.limpar_form_cadastro()
+                self.tableWidget.clearSelection()
+            else:
+                msg = self.controle_emissoes.add_emissao(emissao)
+                self.labelCadastrosError.setText(msg)
+                self.labelCadastrosError.setStyleSheet(self.cor_sucesso)
+                self.tabelar_cadastros()
+                self.limpar_form_cadastro()
+
+    def tabelar_cadastros(self):
+        pass
+    
     def excluir_cadastro(self):
         pass
 
@@ -180,6 +209,9 @@ class Principal(Ui_MainWindow, QMainWindow):
         else:
             self.lineEdit_senha.setEchoMode(QLineEdit.EchoMode.Password)
     # acesso 
+
+    def limpar_form_cadastro(self):
+        pass
     
     # Métodos de Navegação
     def acessar_login(self):
