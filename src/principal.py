@@ -24,7 +24,7 @@ class Principal(Ui_MainWindow, QMainWindow):
         self.frameLoginError.hide()
         self.labelLoginImagem.setPixmap(QPixmap('src/img/icon'))
         self.pushButtonLoginConectar.clicked.connect(self.realizar_login)
-        self.pushButtonLoginCriarConta.clicked.connect(self.acessar_cadastros)
+        self.pushButtonLoginCriarConta.clicked.connect(self.acessar_cad_usuario)
         self.pushButtonLoginEsqSenha.clicked.connect(self.acessar_recuperacao)
         self.pushButtonLoginError.clicked.connect(lambda: self.frameLoginError.hide())
 

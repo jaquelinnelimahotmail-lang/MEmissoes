@@ -3,37 +3,37 @@ from models.usuario import Usuario
 
 class UsuarioControl:
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.__lista_usuarios:List[Usuario] = []
 
-    def add_usuario(self, usuario:Usuario):
+    def add_usuario(self, usuario:Usuario) -> None:
         self.__lista_usuarios.append(usuario)
         print("usuario adicionado com sucesso")
 
-    def consultar_usuario(self, usuario:str, senha:str):
-        flag = False
+    def validar_acesso(self, usuario:str, senha:str) -> bool:
+        validacao = False
         for usuario in self.__lista_usuarios:
-            if usuario.user == usuario and usuario.senha_1 == senha:
-                flag = True
+            if usuario.usuario == usuario and usuario.senha_1 == senha:
+                validacao = True
                 break
-        return flag
+        return validacao
 
-    def acessar_usuario(self, indice:int):
+    def acessar_usuario(self, indice:int) -> Usuario:
         usuario = self.__lista_usuarios[indice]
         return usuario
 
-    def alterar_usuario(self, indice:int, usuario:Usuario):
+    def alterar_usuario(self, indice:int, usuario:Usuario) -> None:
         self.__lista_usuarios[indice] = usuario
         print("usuario alterado com sucesso")
 
-    def excluir_usuario(self, indice:int):
+    def excluir_usuario(self, indice:int) -> None:
         del self.__lista_usuarios[indice]
         print("usuario excluido com sucesso")
 
     @property
-    def lista_usuarios(self):
+    def lista_usuarios(self) -> List[Usuario]:
         return self.__lista_usuarios
 
     @lista_usuarios.setter
-    def lista_usuarios(self, lista:List[Usuario]):
+    def lista_usuarios(self, lista:List[Usuario]) -> None:
         pass
