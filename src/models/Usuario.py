@@ -3,7 +3,7 @@ class Usuario:
     def __init__(self):
         self.__nome:str = ''
         self.__sobrenome:str = ''
-        self.__user:str = ''
+        self.__usuario:str = ''
         self.__email:str = ''
         self.__senha_1:str = ''
         self.__senha_2:str = ''
@@ -25,7 +25,7 @@ class Usuario:
     def sobrenome(self):
         return self.__sobrenome
 
-    @nome.setter
+    @sobrenome.setter
     def sobrenome(self, sobrenome):
         if sobrenome != '':
             self.__nome = sobrenome
@@ -34,13 +34,13 @@ class Usuario:
             self.error = 'O campo "Sobrenome" é obrigatório'
 
     @property
-    def user(self):
-        return self.__user
+    def usuario(self):
+        return self.__usuario
 
-    @nome.setter
-    def user(self, user):
-        if user != '':
-            self.__user = user
+    @usuario.setter
+    def usuario(self, usuario):
+        if usuario != '':
+            self.__usuario = usuario
             self.error = ''
         else:
             self.error = 'O campo "Usuário" é obrigatório'
@@ -56,7 +56,7 @@ class Usuario:
             self.error = ''
         else:
             self.error = 'O campo "E-mail" é obrigatório'
-
+    
     @property
     def senha_1(self):
         return self.__senha_1
