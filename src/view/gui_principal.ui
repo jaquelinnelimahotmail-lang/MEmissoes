@@ -24,10 +24,7 @@
      </rect>
     </property>
     <property name="frameShape">
-     <enum>QFrame::Shape::StyledPanel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Shadow::Raised</enum>
+     <enum>QFrame::NoFrame</enum>
     </property>
     <widget class="QStackedWidget" name="stackedWidget">
      <property name="geometry">
@@ -52,10 +49,7 @@
         </rect>
        </property>
        <property name="frameShape">
-        <enum>QFrame::Shape::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Shadow::Raised</enum>
+        <enum>QFrame::NoFrame</enum>
        </property>
        <widget class="QLineEdit" name="lineEditLoginSenha">
         <property name="geometry">
@@ -70,10 +64,7 @@
          <string/>
         </property>
         <property name="echoMode">
-         <enum>QLineEdit::EchoMode::Password</enum>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignmentFlag::AlignCenter</set>
+         <enum>QLineEdit::Normal</enum>
         </property>
         <property name="placeholderText">
          <string>Insira a Senha</string>
@@ -153,9 +144,6 @@
           <height>25</height>
          </rect>
         </property>
-        <property name="alignment">
-         <set>Qt::AlignmentFlag::AlignCenter</set>
-        </property>
         <property name="placeholderText">
          <string>Insira o Usuário</string>
         </property>
@@ -178,10 +166,7 @@
         </rect>
        </property>
        <property name="frameShape">
-        <enum>QFrame::Shape::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Shadow::Raised</enum>
+        <enum>QFrame::NoFrame</enum>
        </property>
        <widget class="QLabel" name="labelLoginError">
         <property name="geometry">
@@ -194,9 +179,6 @@
         </property>
         <property name="text">
          <string>...</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignmentFlag::AlignCenter</set>
         </property>
        </widget>
        <widget class="QPushButton" name="pushButtonLoginError">
@@ -223,10 +205,7 @@
         </rect>
        </property>
        <property name="frameShape">
-        <enum>QFrame::Shape::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Shadow::Raised</enum>
+        <enum>QFrame::NoFrame</enum>
        </property>
        <widget class="QLabel" name="labelLoginTitulo">
         <property name="geometry">
@@ -262,9 +241,6 @@
         <property name="scaledContents">
          <bool>true</bool>
         </property>
-        <property name="alignment">
-         <set>Qt::AlignmentFlag::AlignCenter</set>
-        </property>
        </widget>
       </widget>
      </widget>
@@ -279,10 +255,7 @@
         </rect>
        </property>
        <property name="frameShape">
-        <enum>QFrame::Shape::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Shadow::Raised</enum>
+        <enum>QFrame::NoFrame</enum>
        </property>
        <widget class="QFrame" name="frameCadastrosFormSec">
         <property name="geometry">
@@ -294,10 +267,7 @@
          </rect>
         </property>
         <property name="frameShape">
-         <enum>QFrame::Shape::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Shadow::Raised</enum>
+         <enum>QFrame::NoFrame</enum>
         </property>
         <widget class="QLineEdit" name="lineEditCadastrosLocal">
          <property name="geometry">
@@ -307,9 +277,6 @@
            <width>132</width>
            <height>25</height>
           </rect>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignCenter</set>
          </property>
          <property name="placeholderText">
           <string>...</string>
@@ -350,9 +317,6 @@
            <height>25</height>
           </rect>
          </property>
-         <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignCenter</set>
-         </property>
          <property name="placeholderText">
           <string>...</string>
          </property>
@@ -378,9 +342,6 @@
            <width>552</width>
            <height>25</height>
           </rect>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignCenter</set>
          </property>
          <property name="placeholderText">
           <string>...</string>
@@ -408,9 +369,6 @@
            <height>25</height>
           </rect>
          </property>
-         <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignCenter</set>
-         </property>
          <property name="placeholderText">
           <string>...</string>
          </property>
@@ -437,9 +395,6 @@
            <height>25</height>
           </rect>
          </property>
-         <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignCenter</set>
-         </property>
          <property name="placeholderText">
           <string>...</string>
          </property>
@@ -465,9 +420,6 @@
            <width>181</width>
            <height>25</height>
           </rect>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignCenter</set>
          </property>
          <property name="placeholderText">
           <string>...</string>
@@ -498,9 +450,6 @@
            <height>25</height>
           </rect>
          </property>
-         <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignCenter</set>
-         </property>
          <property name="placeholderText">
           <string>...</string>
          </property>
@@ -517,10 +466,7 @@
         </rect>
        </property>
        <property name="frameShape">
-        <enum>QFrame::Shape::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Shadow::Raised</enum>
+        <enum>QFrame::NoFrame</enum>
        </property>
        <widget class="QLabel" name="labelCadastrosError">
         <property name="geometry">
@@ -533,9 +479,6 @@
         </property>
         <property name="text">
          <string>...</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignmentFlag::AlignCenter</set>
         </property>
        </widget>
        <widget class="QPushButton" name="pushButtonCadastrosError">
@@ -562,10 +505,7 @@
         </rect>
        </property>
        <property name="frameShape">
-        <enum>QFrame::Shape::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Shadow::Raised</enum>
+        <enum>QFrame::NoFrame</enum>
        </property>
        <widget class="QPushButton" name="pushButtonCadastrosSalvar">
         <property name="geometry">
@@ -645,10 +585,7 @@
         </rect>
        </property>
        <property name="frameShape">
-        <enum>QFrame::Shape::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Shadow::Raised</enum>
+        <enum>QFrame::NoFrame</enum>
        </property>
        <widget class="QLabel" name="labelDadosError">
         <property name="geometry">
@@ -661,9 +598,6 @@
         </property>
         <property name="text">
          <string>...</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignmentFlag::AlignCenter</set>
         </property>
        </widget>
        <widget class="QPushButton" name="pushButtonDadosError">
@@ -690,10 +624,7 @@
         </rect>
        </property>
        <property name="frameShape">
-        <enum>QFrame::Shape::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Shadow::Raised</enum>
+        <enum>QFrame::NoFrame</enum>
        </property>
        <widget class="QTableWidget" name="tableWidget">
         <property name="geometry">
@@ -759,10 +690,7 @@
         </rect>
        </property>
        <property name="frameShape">
-        <enum>QFrame::Shape::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Shadow::Raised</enum>
+        <enum>QFrame::NoFrame</enum>
        </property>
        <widget class="QPushButton" name="pushButtonDadosAlterar">
         <property name="geometry">
@@ -829,10 +757,7 @@
         </rect>
        </property>
        <property name="frameShape">
-        <enum>QFrame::Shape::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Shadow::Raised</enum>
+        <enum>QFrame::NoFrame</enum>
        </property>
        <widget class="QLabel" name="labelCadUsuarioError">
         <property name="geometry">
@@ -845,9 +770,6 @@
         </property>
         <property name="text">
          <string>...</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignmentFlag::AlignCenter</set>
         </property>
        </widget>
        <widget class="QPushButton" name="pushButtonCadUsuarioError">
@@ -874,10 +796,7 @@
         </rect>
        </property>
        <property name="frameShape">
-        <enum>QFrame::Shape::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Shadow::Raised</enum>
+        <enum>QFrame::NoFrame</enum>
        </property>
        <widget class="QPushButton" name="pushButtonCadUsuariosCadastrar">
         <property name="geometry">
@@ -916,10 +835,7 @@
         </rect>
        </property>
        <property name="frameShape">
-        <enum>QFrame::Shape::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Shadow::Raised</enum>
+        <enum>QFrame::NoFrame</enum>
        </property>
        <widget class="QFrame" name="frameCadUsuariosFormSec">
         <property name="geometry">
@@ -931,10 +847,7 @@
          </rect>
         </property>
         <property name="frameShape">
-         <enum>QFrame::Shape::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Shadow::Raised</enum>
+         <enum>QFrame::NoFrame</enum>
         </property>
         <widget class="QLineEdit" name="lineEditCadUsuariosNome">
          <property name="geometry">
@@ -944,9 +857,6 @@
            <width>540</width>
            <height>25</height>
           </rect>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignCenter</set>
          </property>
          <property name="placeholderText">
           <string>...</string>
@@ -987,9 +897,6 @@
            <height>25</height>
           </rect>
          </property>
-         <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignCenter</set>
-         </property>
          <property name="placeholderText">
           <string>...</string>
          </property>
@@ -1015,9 +922,6 @@
            <width>540</width>
            <height>25</height>
           </rect>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignCenter</set>
          </property>
          <property name="placeholderText">
           <string>...</string>
@@ -1045,9 +949,6 @@
            <height>25</height>
           </rect>
          </property>
-         <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignCenter</set>
-         </property>
          <property name="placeholderText">
           <string>...</string>
          </property>
@@ -1073,9 +974,6 @@
            <width>540</width>
            <height>25</height>
           </rect>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignCenter</set>
          </property>
          <property name="placeholderText">
           <string>...</string>
@@ -1103,9 +1001,6 @@
            <height>25</height>
           </rect>
          </property>
-         <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignCenter</set>
-         </property>
          <property name="placeholderText">
           <string>...</string>
          </property>
@@ -1124,10 +1019,7 @@
         </rect>
        </property>
        <property name="frameShape">
-        <enum>QFrame::Shape::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Shadow::Raised</enum>
+        <enum>QFrame::NoFrame</enum>
        </property>
        <widget class="QLineEdit" name="lineEditRecuperacaoSenha02">
         <property name="geometry">
@@ -1142,10 +1034,7 @@
          <string/>
         </property>
         <property name="echoMode">
-         <enum>QLineEdit::EchoMode::Password</enum>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignmentFlag::AlignCenter</set>
+         <enum>QLineEdit::Normal</enum>
         </property>
         <property name="placeholderText">
          <string>Confirme a Senha</string>
@@ -1199,9 +1088,6 @@
           <height>25</height>
          </rect>
         </property>
-        <property name="alignment">
-         <set>Qt::AlignmentFlag::AlignCenter</set>
-        </property>
         <property name="placeholderText">
          <string>Insira a Nova Senha</string>
         </property>
@@ -1227,9 +1113,6 @@
           <width>277</width>
           <height>25</height>
          </rect>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignmentFlag::AlignCenter</set>
         </property>
         <property name="placeholderText">
          <string>Insira o Usuário</string>
@@ -1259,10 +1142,7 @@
         </rect>
        </property>
        <property name="frameShape">
-        <enum>QFrame::Shape::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Shadow::Raised</enum>
+        <enum>QFrame::NoFrame</enum>
        </property>
        <widget class="QLabel" name="labelRecuperacaoError">
         <property name="geometry">
@@ -1275,9 +1155,6 @@
         </property>
         <property name="text">
          <string>...</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignmentFlag::AlignCenter</set>
         </property>
        </widget>
        <widget class="QPushButton" name="pushButtonRecuperacaoError">
