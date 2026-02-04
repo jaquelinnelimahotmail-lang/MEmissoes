@@ -1005,7 +1005,7 @@
          <x>210</x>
          <y>220</y>
          <width>351</width>
-         <height>151</height>
+         <height>191</height>
         </rect>
        </property>
        <property name="frameShape">
@@ -1014,9 +1014,9 @@
        <widget class="QLineEdit" name="lineEditRecuperacaoSenha02">
         <property name="geometry">
          <rect>
-          <x>60</x>
-          <y>65</y>
-          <width>277</width>
+          <x>86</x>
+          <y>100</y>
+          <width>251</width>
           <height>25</height>
          </rect>
         </property>
@@ -1034,33 +1034,33 @@
         <property name="geometry">
          <rect>
           <x>11</x>
-          <y>38</y>
-          <width>43</width>
+          <y>70</y>
+          <width>61</width>
           <height>16</height>
          </rect>
         </property>
         <property name="text">
-         <string>Senha:</string>
+         <string>Nova Senha:</string>
         </property>
        </widget>
        <widget class="QLabel" name="labelRecuperacaoSenha02">
         <property name="geometry">
          <rect>
           <x>11</x>
-          <y>65</y>
-          <width>35</width>
+          <y>100</y>
+          <width>61</width>
           <height>16</height>
          </rect>
         </property>
         <property name="text">
-         <string>Senha:</string>
+         <string>Nova Senha:</string>
         </property>
        </widget>
        <widget class="QPushButton" name="pushButtonRecuperacaoSalvar">
         <property name="geometry">
          <rect>
           <x>11</x>
-          <y>92</y>
+          <y>130</y>
           <width>329</width>
           <height>25</height>
          </rect>
@@ -1072,9 +1072,9 @@
        <widget class="QLineEdit" name="lineEditRecuperacaoSenha01">
         <property name="geometry">
          <rect>
-          <x>60</x>
-          <y>38</y>
-          <width>277</width>
+          <x>86</x>
+          <y>70</y>
+          <width>251</width>
           <height>25</height>
          </rect>
         </property>
@@ -1086,7 +1086,7 @@
         <property name="geometry">
          <rect>
           <x>11</x>
-          <y>120</y>
+          <y>160</y>
           <width>329</width>
           <height>25</height>
          </rect>
@@ -1119,6 +1119,32 @@
         </property>
         <property name="text">
          <string>Usuário:</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEditRecuperacaoSenhaA">
+        <property name="geometry">
+         <rect>
+          <x>86</x>
+          <y>40</y>
+          <width>251</width>
+          <height>25</height>
+         </rect>
+        </property>
+        <property name="placeholderText">
+         <string>Insira a Nova Senha</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="labelRecuperacaoSenhaA">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>40</y>
+          <width>71</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Senha Antiga:</string>
         </property>
        </widget>
       </widget>
