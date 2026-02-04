@@ -205,10 +205,17 @@ class Principal(Ui_MainWindow, QMainWindow):
             self.labelCadUsuarioError.setStyleSheet(self.cor_erro)
             self.frameCadUsuarioError.show()
         else:
-            msg = self.controle_usuarios.add_usuario(usuario)
-            self.labelCadastrosError.setText(msg)
-            self.labelCadastrosError.setStyleSheet(self.cor_sucesso)
-            self.limpar_form_cadastro()
+            if self.controle_usuarios.verificar_user(usuario.nome):
+                msg = 'Erro: nome de usuário já registrado'
+                self.labelCadUsuarioError.setText(msg)
+                self.labelCadUsuarioError.setStyleSheet(self.cor_erro)
+                self.frameCadUsuarioError.show()
+            else:
+                msg = self.controle_usuarios.add_usuario(usuario)
+                self.labelCadUsuarioError.setText(msg)
+                self.labelCadUsuarioError.setStyleSheet(self.cor_sucesso)
+                self.frameCadUsuarioError.show()
+                self.limpar_form_cadastro()
 
     def recuperacao_senha(self):
         pass

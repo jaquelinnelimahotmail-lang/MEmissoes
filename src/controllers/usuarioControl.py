@@ -7,15 +7,22 @@ class UsuarioControl:
     def __init__(self) -> None:
         self.__lista_usuarios: List[Usuario] = []
 
-    def add_usuario(self, usuario: Usuario) -> str:
+    def add_usuario(self, usuario:Usuario) -> str:
         self.__lista_usuarios.append(usuario)
         return 'Usuário adicionado com sucesso'
 
-    def validar_acesso(self, login: str, senha: str) -> bool:
+    def validar_acesso(self, login:str, senha:str) -> bool:
         for usuario in self.__lista_usuarios:
             if usuario.usuario == login and usuario.senha_1 == senha:
                 return True
         return False
+
+    def verificar_user(self, user) -> bool:
+        for usuario in self.__lista_usuarios:
+            if usuario.usuario == user:
+                return True
+        return False
+
 
     #def acessar_usuario(self, indice: int) -> Usuario:
         #return self.__lista_usuarios[indice]
