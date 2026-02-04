@@ -18,6 +18,7 @@ class Principal(Ui_MainWindow, QMainWindow):
         self.controle_usuarios = UsuarioControl()
         self.controle_emissoes = EmissaoControl()
         self.init_usuarios()
+        self.registro_acesso()
         self.cor_sucesso = 'background-color: rgb(101, 184, 145)'
         self.cor_erro = 'background-color: rgb(204, 41, 54); color: rgb(255, 255, 255)'
 
@@ -79,6 +80,9 @@ class Principal(Ui_MainWindow, QMainWindow):
         usuario_2.senha_2 = '67890'
         self.controle_usuarios.add_usuario(usuario_2)
 
+    def registro_acesso(self):
+        self.usuario_logado = str
+
     # Métodos da Classe
     def realizar_login(self):
         user = self.lineEditLoginUsuario.text()
@@ -89,6 +93,7 @@ class Principal(Ui_MainWindow, QMainWindow):
             self.lineEditLoginSenha.clear()
             self.frameLoginError.hide()
             self.acessar_cadastros()
+            self.usuario_logado = user
             print('Login realizado com sucesso')
         else:
             self.labelLoginError.setText('Usuário ou Senha incorretos')
@@ -96,7 +101,6 @@ class Principal(Ui_MainWindow, QMainWindow):
             self.frameLoginError.show()
 
     def salvar_cadastro(self):
-        
         indice = self.tableWidget.currentRow()
 
         emissao = Emissao()
@@ -113,7 +117,7 @@ class Principal(Ui_MainWindow, QMainWindow):
             self.frameCadastrosError.show()
         else:
             if indice >= 0:
-                msg = self.controle_emissoes.excluir_emissao(indice, emissao)
+                msg = self.controle_emissoes.alterar_emissao(indice, emissao)
                 self.labelCadastrosError.setText(msg)
                 self.labelCadastrosError.setStyleSheet(self.cor_sucesso)
                 self.frameCadastrosError.show()
@@ -128,8 +132,9 @@ class Principal(Ui_MainWindow, QMainWindow):
                 self.limpar_form_cadastro()
 
     def tabelar_cadastros(self):
+
         pass
-    
+
     def excluir_cadastro(self):
         pass
 
