@@ -250,8 +250,15 @@ class Principal(Ui_MainWindow, QMainWindow):
         self.stackedWidget.setCurrentWidget(self.pageRecuperacao)
 
     def sair(self):
-        self.acessar_login()
         self.limpar_form_emissao()
+        self.limpar_form_cadastro()
+        self.tableWidget.clearContents()
+        self.frameLoginError.hide()
+        self.frameCadastrosError.hide()
+        self.frameDadosError.hide()
+        self.frameCadUsuarioError.hide()
+        self.frameRecuperacaoError.hide()
+        self.acessar_login()
 
     # LIMPEZA
     def __limpar_componentes(self, componentes:list) -> None:
