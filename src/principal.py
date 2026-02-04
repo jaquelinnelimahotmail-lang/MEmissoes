@@ -62,6 +62,8 @@ class Principal(Ui_MainWindow, QMainWindow):
         self.pushButtonRecuperacaoVoltar.clicked.connect(self.acessar_login)
         self.pushButtonRecuperacaoError.clicked.connect(lambda: self.frameRecuperacaoError.hide())
 
+    # METODOS DE LOGIN
+
     def init_usuarios(self):
         usuario_1 = Usuario()
         usuario_1.nome = 'Jaqueline'
@@ -81,7 +83,6 @@ class Principal(Ui_MainWindow, QMainWindow):
         usuario_2.senha_2 = '67890'
         self.controle_usuarios.add_usuario(usuario_2)
 
-    # Métodos da Classe
     def realizar_login(self):
         user = self.lineEditLoginUsuario.text()
         senha = self.lineEditLoginSenha.text()
@@ -97,6 +98,8 @@ class Principal(Ui_MainWindow, QMainWindow):
             self.labelLoginError.setText('Usuário ou Senha incorretos')
             self.labelLoginError.setStyleSheet(self.cor_erro)
             self.frameLoginError.show()
+
+    # METODOS DE EMISSAO
 
     def salvar_cadastro(self):
         indice = self.tableWidget.currentRow()
@@ -214,7 +217,7 @@ class Principal(Ui_MainWindow, QMainWindow):
 
     def acessar_recuperacao(self):
         self.stackedWidget.setCurrentWidget(self.pageRecuperacao)
-    
+
     def sair(self):
         self.acessar_login()
         self.limpar_form_emissao()
@@ -237,7 +240,6 @@ class Principal(Ui_MainWindow, QMainWindow):
             self.__usuario_logado = user
         else:
             print('O campo usuário não pode ser vazio')
-
 
 if __name__ == '__main__':
     qt = QApplication(sys.argv)
