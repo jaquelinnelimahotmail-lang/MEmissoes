@@ -37,7 +37,7 @@ class Principal(Ui_MainWindow, QMainWindow):
         self.pushButtonCadastrosSalvar.clicked.connect(self.salvar_cadastro)
         self.pushButtonCadastrosLimpar.clicked.connect(self.limpar_form_emissao)
         self.pushButtonCadastrosDados.clicked.connect(self.acessar_dados)
-        self.pushButtonCadastrosSair.clicked.connect(self.acessar_login)
+        self.pushButtonCadastrosSair.clicked.connect(self.sair)
         self.pushButtonCadastrosError.clicked.connect(lambda: self.frameCadastrosError.hide())
 
         # Componentes da tela Dados
@@ -45,13 +45,13 @@ class Principal(Ui_MainWindow, QMainWindow):
         self.pushButtonDadosAlterar.clicked.connect(self.alterar_cadastro)
         self.pushButtonDadosExcluir.clicked.connect(self.excluir_cadastro)
         self.pushButtonDadosVoltar.clicked.connect(self.acessar_cadastros)
-        self.pushButtonDadosSair.clicked.connect(self.acessar_login)
+        self.pushButtonDadosSair.clicked.connect(self.sair)
         self.pushButtonDadosError.clicked.connect(lambda: self.frameDadosError.hide())
 
         # Componentes da tela Cadastro de Usuarios
         self.frameCadUsuarioError.hide()
         self.pushButtonCadUsuariosCadastrar.clicked.connect(self.cadastrar_usuario)
-        self.pushButtonCadUsuariosVoltar.clicked.connect(self.acessar_login)
+        self.pushButtonCadUsuariosVoltar.clicked.connect(self.sair)
         self.pushButtonCadUsuarioError.clicked.connect(lambda: self.frameCadUsuarioError.hide())
 
     # METODOS DE LOGIN

@@ -179,7 +179,7 @@ class Ui_MainWindow(object):
         self.frameDadosTable.setObjectName("frameDadosTable")
         self.tableWidget = QtWidgets.QTableWidget(parent=self.frameDadosTable)
         self.tableWidget.setGeometry(QtCore.QRect(10, 10, 631, 461))
-        self.tableWidget.setWordWrap(False)
+        self.tableWidget.setWordWrap(True)
         self.tableWidget.setObjectName("tableWidget")
         self.tableWidget.setColumnCount(8)
         self.tableWidget.setRowCount(0)

@@ -615,7 +615,7 @@
          </rect>
         </property>
         <property name="wordWrap">
-         <bool>false</bool>
+         <bool>true</bool>
         </property>
         <column>
          <property name="text">
