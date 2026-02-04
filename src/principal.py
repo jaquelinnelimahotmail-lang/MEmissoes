@@ -194,6 +194,7 @@ class Principal(Ui_MainWindow, QMainWindow):
 
     def cadastrar_usuario(self):
         usuario = Usuario()
+        usuario.nome = self.lineEditCadUsuariosNome.
 
     def recuperacao_senha(self):
         pass

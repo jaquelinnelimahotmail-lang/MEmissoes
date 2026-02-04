@@ -904,7 +904,7 @@
           <string>Usuário:</string>
          </property>
         </widget>
-        <widget class="QLineEdit" name="lineEditCadUsuarios">
+        <widget class="QLineEdit" name="lineEditCadUsuariosUser">
          <property name="geometry">
           <rect>
            <x>81</x>
@@ -982,7 +982,7 @@
           <string>E-mail:</string>
          </property>
         </widget>
-        <widget class="QLineEdit" name="lineEditCadUsuarios_2">
+        <widget class="QLineEdit" name="lineEditCadUsuariosEmail">
          <property name="geometry">
           <rect>
            <x>80</x>
