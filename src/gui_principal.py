@@ -17,16 +17,7 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName("centralwidget")
         self.framePrincipal = QtWidgets.QFrame(parent=self.centralwidget)
         self.framePrincipal.setGeometry(QtCore.QRect(-11, -1, 821, 611))
-        self.framePrincipal.setStyleSheet("QFrame {\n"
-"    background-color: rgb(255, 255,255);\n"
-"    color: rgb(0, 0, 0)\n"
-"}\n"
-"\n"
-"QLineEdit {\n"
-"    background-color: rgb(255, 255,255);\n"
-"    color: rgb(0, 0, 0)\n"
-"}\n"
-"")
+        self.framePrincipal.setStyleSheet("")
         self.framePrincipal.setFrameShape(QtWidgets.QFrame.Shape.NoFrame)
         self.framePrincipal.setObjectName("framePrincipal")
         self.stackedWidget = QtWidgets.QStackedWidget(parent=self.framePrincipal)
