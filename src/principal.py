@@ -121,6 +121,7 @@ class Principal(Ui_MainWindow, QMainWindow):
                 msg = self.controle_emissoes.add_emissao(emissao)
                 self.labelCadastrosError.setText(msg)
                 self.labelCadastrosError.setStyleSheet(self.cor_sucesso)
+                self.frameCadastrosError.show()
                 self.tabelar_dados()
                 self.limpar_form_emissao()
 
