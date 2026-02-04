@@ -121,17 +121,17 @@ class Principal(Ui_MainWindow, QMainWindow):
                 self.labelCadastrosError.setText(msg)
                 self.labelCadastrosError.setStyleSheet(self.cor_sucesso)
                 self.frameCadastrosError.show()
-                self.tabelar_cadastros()
+                self.tabelar_dados()
                 self.limpar_form_emissao()
                 self.tableWidget.clearSelection()
             else:
                 msg = self.controle_emissoes.add_emissao(emissao)
                 self.labelCadastrosError.setText(msg)
                 self.labelCadastrosError.setStyleSheet(self.cor_sucesso)
-                self.tabelar_cadastros()
+                self.tabelar_dados()
                 self.limpar_form_emissao()
 
-    def tabelar_cadastros(self) -> None:
+    def tabelar_dados(self) -> None:
         count_linhas = 0
         self.tableWidget.clearContents()
         self.tableWidget.setRowCount(len(self.controle_emissoes.lista_emissoes))
@@ -171,7 +171,7 @@ class Principal(Ui_MainWindow, QMainWindow):
             self.labelDadosError.setText(msg)
             self.labelDadosError.setStyleSheet(self.cor_sucesso)
             self.labelDadosError.show()
-            self.tabelar_cadastros()
+            self.tabelar_dados()
         else:
             msg = 'Erro: selecione o cadastro que deseja excluir'
             self.labelDadosError.setText(msg)
@@ -194,13 +194,35 @@ class Principal(Ui_MainWindow, QMainWindow):
 
     def cadastrar_usuario(self):
         usuario = Usuario()
-        usuario.nome = self.lineEditCadUsuariosNome.
+        usuario.nome = self.lineEditCadUsuariosNome.text()
+        usuario.sobrenome = self.lineEditCadUsuariosNome.text()
+        usuario.usuario = self.lineEditCadUsuariosUser.text()
+        usuario.email = self.lineEditCadUsuariosEmail.text()
+        usuario.senha_1 = self.lineEditCadUsuariosSenha01.text()
+        usuario.senha_2 = self.lineEditCadUsuariosSenha02.text()
+        if len(usuario.error) != 0:
+            self.labelCadUsuarioError.setText(usuario.error)
+            self.labelCadUsuarioError.setStyleSheet(self.cor_erro)
+            self.frameCadUsuarioError.show()
+        else:
+            msg = self.controle_usuarios.add_usuario(usuario)
+            self.labelCadastrosError.setText(msg)
+            self.labelCadastrosError.setStyleSheet(self.cor_sucesso)
+            self.limpar_form_cadastro()
 
     def recuperacao_senha(self):
         pass
 
     def limpar_form_cadastro(self):
-        pass
+        componentes = [
+            self.lineEditCadUsuariosNome,
+            self.lineEditCadUsuariosNome,
+            self.lineEditCadUsuariosUser,
+            self.lineEditCadUsuariosEmail,
+            self.lineEditCadUsuariosSenha01,
+            self.lineEditCadUsuariosSenha02
+        ]
+        self.__limpar_componentes(componentes)
 
     # METODOS DIVERSOS
 
