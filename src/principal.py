@@ -1,7 +1,8 @@
 import sys
 from gui_principal import Ui_MainWindow
 from PyQt6.QtWidgets import QMainWindow, QApplication
-from PyQt6.QtGui import QPixmap, QIcon
+from PyQt6.QtWidgets import QTableWidgetItem, QLineEdit 
+from PyQt6.QtGui import QPixmap
 
 from models.usuario import Usuario
 from models.emissao import Emissao
@@ -18,7 +19,7 @@ class Principal(Ui_MainWindow, QMainWindow):
         self.controle_usuarios = UsuarioControl()
         self.controle_emissoes = EmissaoControl()
         self.init_usuarios()
-        self.registro_acesso()
+        self.__usuario_logado = ''
         self.cor_sucesso = 'background-color: rgb(101, 184, 145)'
         self.cor_erro = 'background-color: rgb(204, 41, 54); color: rgb(255, 255, 255)'
 
@@ -35,8 +36,8 @@ class Principal(Ui_MainWindow, QMainWindow):
         # Componentes da tela Cadastro de Emissões
         self.frameCadastrosError.hide()
         self.pushButtonCadastrosSalvar.clicked.connect(self.salvar_cadastro)
-        self.pushButtonCadastrosExcluir.clicked.connect(self.excluir_cadastro)
-        #self.pushButtonCadastrosLimpar.clicked.connect()
+        #self.pushButtonCadastrosExcluir.clicked.connect(self.excluir_cadastro)
+        self.pushButtonCadastrosLimpar.clicked.connect(self.limpar_form_emissao)
         self.pushButtonCadastrosDados.clicked.connect(self.acessar_dados)
         self.pushButtonCadastrosSair.clicked.connect(self.acessar_login)
         self.pushButtonCadastrosError.clicked.connect(lambda: self.frameCadastrosError.hide())
@@ -44,7 +45,7 @@ class Principal(Ui_MainWindow, QMainWindow):
         # Componentes da tela Dados
         self.frameDadosError.hide()
         self.pushButtonDadosAlterar.clicked.connect(self.alterar_cadastro)
-        self.pushButtonDadosExcluir.clicked.connect(self.excluir_cadastro_dados)
+        self.pushButtonDadosExcluir.clicked.connect(self.excluir_cadastro)
         self.pushButtonDadosVoltar.clicked.connect(self.acessar_cadastros)
         self.pushButtonDadosSair.clicked.connect(self.acessar_login)
         self.pushButtonDadosError.clicked.connect(lambda: self.frameDadosError.hide())
@@ -80,9 +81,6 @@ class Principal(Ui_MainWindow, QMainWindow):
         usuario_2.senha_2 = '67890'
         self.controle_usuarios.add_usuario(usuario_2)
 
-    def registro_acesso(self):
-        self.usuario_logado = str
-
     # Métodos da Classe
     def realizar_login(self):
         user = self.lineEditLoginUsuario.text()
@@ -93,7 +91,7 @@ class Principal(Ui_MainWindow, QMainWindow):
             self.lineEditLoginSenha.clear()
             self.frameLoginError.hide()
             self.acessar_cadastros()
-            self.usuario_logado = user
+            self.__usuario_logado = user
             print('Login realizado com sucesso')
         else:
             self.labelLoginError.setText('Usuário ou Senha incorretos')
@@ -122,27 +120,73 @@ class Principal(Ui_MainWindow, QMainWindow):
                 self.labelCadastrosError.setStyleSheet(self.cor_sucesso)
                 self.frameCadastrosError.show()
                 self.tabelar_cadastros()
-                self.limpar_form_cadastro()
+                self.limpar_form_emissao()
                 self.tableWidget.clearSelection()
             else:
                 msg = self.controle_emissoes.add_emissao(emissao)
                 self.labelCadastrosError.setText(msg)
                 self.labelCadastrosError.setStyleSheet(self.cor_sucesso)
                 self.tabelar_cadastros()
-                self.limpar_form_cadastro()
+                self.limpar_form_emissao()
 
-    def tabelar_cadastros(self):
-
-        pass
-
-    def excluir_cadastro(self):
-        pass
+    def tabelar_cadastros(self) -> None:
+        count_linhas = 0
+        self.tableWidget.clearContents()
+        self.tableWidget.setRowCount(len(self.controle_emissoes.lista_emissoes))
+        for emissao in self.controle_emissoes.lista_emissoes:
+            self.tableWidget.setItem(count_linhas, 0, QTableWidgetItem(self.usuario_logado))
+            self.tableWidget.setItem(count_linhas, 1, QTableWidgetItem(emissao.local))
+            self.tableWidget.setItem(count_linhas, 2, QTableWidgetItem(emissao.latitude))
+            self.tableWidget.setItem(count_linhas, 3, QTableWidgetItem(emissao.longitude))
+            self.tableWidget.setItem(count_linhas, 4, QTableWidgetItem(emissao.tipo_gas))
+            self.tableWidget.setItem(count_linhas, 5, QTableWidgetItem(emissao.valor))
+            self.tableWidget.setItem(count_linhas, 6, QTableWidgetItem(emissao.unidade))
+            self.tableWidget.setItem(count_linhas, 7, QTableWidgetItem(str(emissao.limite)))
+            count_linhas += 1
 
     def alterar_cadastro(self):
-        pass
+        indice = self.tableWidget.currentRow()
+        if indice >= 0:
+            emissao = self.controle_emissoes.acessar_emissao(indice)
+            self.lineEditCadastrosLocal.setText(emissao.local)
+            self.lineEditCadastrosLatitude.setText(emissao.latitude)
+            self.lineEditCadastrosLongitude.setText(emissao.longitude)
+            self.lineEditCadastrosTipoDeGas.setText(emissao.tipo_gas)
+            self.lineEditCadastrosValor.setText(emissao.valor)
+            self.lineEditCadastrosUnidade.setText(emissao.unidade)
+            self.lineEditCadastrosLimite.setText(str(emissao.limite))
+            self.acessar_cadastros()
+        else:
+            msg = 'Erro: selecione o cadastro de emissão que deseja alterar'
+            self.labelDadosError.setText(msg)
+            self.labelDadosError.setStyleSheet(self.cor_erro)
+            self.frameDadosError.show()
 
-    def excluir_cadastro_dados(self):
-        pass
+    def excluir_cadastro(self):
+        indice = self.tableWidget.currentRow()
+        if indice >= 0:
+            msg = self.controle_emissoes.excluir_emissao(indice)
+            self.labelDadosError.setText(msg)
+            self.labelDadosError.setStyleSheet(self.cor_sucesso)
+            self.labelDadosError.show()
+            self.tabelar_cadastros()
+        else:
+            msg = 'Erro: selecione o cadastro que deseja excluir'
+            self.labelDadosError.setText(msg)
+            self.labelDadosError.setStyleSheet(self.cor_erro)
+            self.frameDadosError.show()
+
+    def limpar_form_emissao(self):
+        componentes = [
+            self.lineEditCadastrosLocal,
+            self.lineEditCadastrosLatitude,
+            self.lineEditCadastrosLongitude,
+            self.lineEditCadastrosTipoDeGas,
+            self.lineEditCadastrosValor,
+            self.lineEditCadastrosUnidade,
+            self.lineEditCadastrosLimite
+        ]
+        self.__limpar_componentes(componentes)
 
     def cadastrar_usuario(self):
         pass
@@ -150,89 +194,50 @@ class Principal(Ui_MainWindow, QMainWindow):
     def recuperacao_senha(self):
         pass
 
-    # ================= CRIAR CONTA =================
-    def criar_conta(self):
-        nome = self.lineEdit_nome_usuario.text()
-        senha = self.lineEdit_nova_senha.text()
-        confirma = self.lineEdit_confirma_senha.text()
-
-        if QMainWindow == "" or senha == "" or confirma == "":
-            QMainWindow.warning(self, "Erro", "Preencha todos os campos.")
-            return
-
-        if senha != confirma:
-            QMainWindow.warning(self, "Erro", "Senhas não coincidem.")
-            return
-
-        self.lista_usuario.apped({"usuario": nome, "senha": senha})
-
-        QMainWindow.information(self, "Sucesso", "Conta criada com sucesso!")
-        self.voltar_login()
-
-    # ================= REDEFINIR SENHA =================
-    def redefinir_senha(self):
-        usuario_digitado = self.lineEdit_usuario.text()
-        nova_senha = self.lineEdit_nova_senha.text()
-
-        for usuario in self.lista_usuario:
-            if usuario_digitado == usuario['usuario']:
-                usuario['senha'] = nova_senha
-                QMainWindow.information(self, "Sucesso", "Senha alterada com sucesso!")
-                self.voltar_login()
-                return
-
-        QMainWindow.warning(self, "Erro", "Usuário não encontrado.")
-
-    # ================= TROCAR TELAS =================
-    def ir_para_criar_conta(self):
-        self.stackedWidget.setCurrentWidget(self.page_3)
-
-    def ir_para_esqueci_senha(self):
-        self.stackedWidget.setCurrentWidget(self.page_4)
-
-    def voltar_login(self):
-        self.stackedWidget.setCurrentWidget(self.page)
-
-    # ================= SAIR =================
-    def sair_sistema(self):
-        resposta = QMainWindow.question(
-            self,
-            "Sair",
-            "Deseja realmente sair?",
-            QMainWindow.StandardButton.Yes | QMainWindow.StandardButton.No
-        )
-
-        if resposta == QMainWindow.StandardButton.Yes:
-            self.lineEdit_usuario.clear()
-            self.lineEdit_senha.clear()
-            self.stackedWidget.setCurrentWidget(self.page)
-
-    # ================= VISUALIZAR SENHA =================
-    def visualizar_senha(self):
-        if self.lineEdit_senha.echoMode() == QLineEdit.EchoMode.Password:
-            self.lineEdit_senha.setEchoMode(QLineEdit.EchoMode.Normal)
-        else:
-            self.lineEdit_senha.setEchoMode(QLineEdit.EchoMode.Password)
-    # acesso 
-
     def limpar_form_cadastro(self):
         pass
-    
-    # Métodos de Navegação
+
+    # METODOS DIVERSOS
+
+    # NAVEGACAO
     def acessar_login(self):
         self.stackedWidget.setCurrentWidget(self.pageLogin)
 
     def acessar_cadastros(self):
         self.stackedWidget.setCurrentWidget(self.pageCadastros)
-    
+
     def acessar_dados(self):
         self.stackedWidget.setCurrentWidget(self.pageDados)
 
     def acessar_cad_usuario(self):
         self.stackedWidget.setCurrentWidget(self.pageCadUsuario)
-    
+
     def acessar_recuperacao(self):
         self.stackedWidget.setCurrentWidget(self.pageRecuperacao)
+    
+    def sair(self):
+        self.acessar_login()
+        self.limpar_form_emissao()
+
+    # LIMPEZA
+    def __limpar_componentes(self, componentes:list) -> None:
+        for componente in componentes:
+            if isinstance(componente, QLineEdit):
+                componente.clear()
+
+    # ENCAPSULAMENTO
+
+    @property
+    def usuario_logado(self):
+        return self.__usuario_logado
+
+    @usuario_logado.setter
+    def usuario_logado(self, user):
+        if len(user) != 0:
+            self.__usuario_logado = user
+        else:
+            print('O campo usuário não pode ser vazio')
+
 
 if __name__ == '__main__':
     qt = QApplication(sys.argv)
