@@ -1,7 +1,6 @@
 from typing import List
 from models.usuario import Usuario
 
-
 class UsuarioControl:
 
     def __init__(self) -> None:
@@ -22,7 +21,6 @@ class UsuarioControl:
             if usuario.usuario == user:
                 return True
         return False
-
 
     #def acessar_usuario(self, indice: int) -> Usuario:
         #return self.__lista_usuarios[indice]
