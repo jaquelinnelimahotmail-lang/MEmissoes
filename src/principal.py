@@ -30,7 +30,6 @@ class Principal(Ui_MainWindow, QMainWindow):
         self.labelLoginImagem.setPixmap(QPixmap('src/img/icon'))
         self.pushButtonLoginConectar.clicked.connect(self.realizar_login)
         self.pushButtonLoginCriarConta.clicked.connect(self.acessar_cad_usuario)
-        self.pushButtonLoginEsqSenha.clicked.connect(self.acessar_recuperacao)
         self.pushButtonLoginError.clicked.connect(lambda: self.frameLoginError.hide())
 
         # Componentes da tela Cadastro de Emissões
@@ -54,12 +53,6 @@ class Principal(Ui_MainWindow, QMainWindow):
         self.pushButtonCadUsuariosCadastrar.clicked.connect(self.cadastrar_usuario)
         self.pushButtonCadUsuariosVoltar.clicked.connect(self.acessar_login)
         self.pushButtonCadUsuarioError.clicked.connect(lambda: self.frameCadUsuarioError.hide())
-
-        # Componentes da tela Recuperação
-        self.frameRecuperacaoError.hide()
-        self.pushButtonRecuperacaoSalvar.clicked.connect(self.recuperacao_senha)
-        self.pushButtonRecuperacaoVoltar.clicked.connect(self.acessar_login)
-        self.pushButtonRecuperacaoError.clicked.connect(lambda: self.frameRecuperacaoError.hide())
 
     # METODOS DE LOGIN
 
@@ -217,9 +210,6 @@ class Principal(Ui_MainWindow, QMainWindow):
                 self.frameCadUsuarioError.show()
                 self.limpar_form_cadastro()
 
-    def recuperacao_senha(self):
-        pass
-
     def limpar_form_cadastro(self):
         componentes = [
             self.lineEditCadUsuariosNome,
@@ -246,8 +236,6 @@ class Principal(Ui_MainWindow, QMainWindow):
     def acessar_cad_usuario(self):
         self.stackedWidget.setCurrentWidget(self.pageCadUsuario)
 
-    def acessar_recuperacao(self):
-        self.stackedWidget.setCurrentWidget(self.pageRecuperacao)
 
     def sair(self):
         self.limpar_form_emissao()
@@ -257,7 +245,6 @@ class Principal(Ui_MainWindow, QMainWindow):
         self.frameCadastrosError.hide()
         self.frameDadosError.hide()
         self.frameCadUsuarioError.hide()
-        self.frameRecuperacaoError.hide()
         self.acessar_login()
 
     # LIMPEZA
