@@ -191,6 +191,8 @@ class Principal(Ui_MainWindow, QMainWindow):
         ]
         self.__limpar_componentes(componentes)
 
+    # METODOS DE USUARIO
+
     def cadastrar_usuario(self):
         pass
 
