@@ -32,7 +32,7 @@ class Ui_MainWindow(object):
         self.lineEditLoginSenha = QtWidgets.QLineEdit(parent=self.frameLoginEntradas)
         self.lineEditLoginSenha.setGeometry(QtCore.QRect(60, 38, 277, 25))
         self.lineEditLoginSenha.setText("")
-        self.lineEditLoginSenha.setEchoMode(QtWidgets.QLineEdit.EchoMode.Normal)
+        self.lineEditLoginSenha.setEchoMode(QtWidgets.QLineEdit.EchoMode.PasswordEchoOnEdit)
         self.lineEditLoginSenha.setObjectName("lineEditLoginSenha")
         self.labelLoginUsuario = QtWidgets.QLabel(parent=self.frameLoginEntradas)
         self.labelLoginUsuario.setGeometry(QtCore.QRect(11, 11, 43, 16))
