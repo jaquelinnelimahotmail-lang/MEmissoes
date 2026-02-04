@@ -36,7 +36,6 @@ class Principal(Ui_MainWindow, QMainWindow):
         # Componentes da tela Cadastro de Emissões
         self.frameCadastrosError.hide()
         self.pushButtonCadastrosSalvar.clicked.connect(self.salvar_cadastro)
-        #self.pushButtonCadastrosExcluir.clicked.connect(self.excluir_cadastro)
         self.pushButtonCadastrosLimpar.clicked.connect(self.limpar_form_emissao)
         self.pushButtonCadastrosDados.clicked.connect(self.acessar_dados)
         self.pushButtonCadastrosSair.clicked.connect(self.acessar_login)
@@ -194,7 +193,7 @@ class Principal(Ui_MainWindow, QMainWindow):
     # METODOS DE USUARIO
 
     def cadastrar_usuario(self):
-        pass
+        usuario = Usuario()
 
     def recuperacao_senha(self):
         pass
