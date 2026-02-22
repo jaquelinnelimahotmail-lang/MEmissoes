@@ -199,7 +199,7 @@ class Principal(Ui_MainWindow, QMainWindow):
             self.labelCadUsuarioError.setStyleSheet(self.cor_erro)
             self.frameCadUsuarioError.show()
         else:
-            if self.controle_usuarios.verificar_user(usuario.nome):
+            if self.controle_usuarios.verificar_user(usuario.usuario):
                 msg = 'Erro: nome de usuário já registrado'
                 self.labelCadUsuarioError.setText(msg)
                 self.labelCadUsuarioError.setStyleSheet(self.cor_erro)
@@ -215,7 +215,7 @@ class Principal(Ui_MainWindow, QMainWindow):
     def limpar_form_cadastro(self):
         componentes = [
             self.lineEditCadUsuariosNome,
-            self.lineEditCadUsuariosNome,
+            self.lineEditCadUsuariosSobrenome,
             self.lineEditCadUsuariosUser,
             self.lineEditCadUsuariosEmail,
             self.lineEditCadUsuariosSenha01,
