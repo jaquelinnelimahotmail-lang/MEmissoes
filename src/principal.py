@@ -54,7 +54,7 @@ class Principal(Ui_MainWindow, QMainWindow):
         self.pushButtonCadUsuariosVoltar.clicked.connect(self.sair)
         self.pushButtonCadUsuarioError.clicked.connect(lambda: self.frameCadUsuarioError.hide())
 
-    # METODOS DE LOGIN
+    # login
 
     def init_usuarios(self):
         usuario_1 = Usuario()
@@ -121,6 +121,7 @@ class Principal(Ui_MainWindow, QMainWindow):
                 msg = self.controle_emissoes.add_emissao(emissao)
                 self.labelCadastrosError.setText(msg)
                 self.labelCadastrosError.setStyleSheet(self.cor_sucesso)
+                self.frameCadastrosError.show()
                 self.tabelar_dados()
                 self.limpar_form_emissao()
 
@@ -208,6 +209,7 @@ class Principal(Ui_MainWindow, QMainWindow):
                 self.labelCadUsuarioError.setText(msg)
                 self.labelCadUsuarioError.setStyleSheet(self.cor_sucesso)
                 self.frameCadUsuarioError.show()
+                # salvar no txt o obj que foi salvo
                 self.limpar_form_cadastro()
 
     def limpar_form_cadastro(self):
@@ -272,3 +274,4 @@ if __name__ == '__main__':
     principal.setWindowTitle('MEmissoes')
     principal.show()
     qt.exec()
+ 
